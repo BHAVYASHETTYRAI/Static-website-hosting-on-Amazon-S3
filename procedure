@@ -1,0 +1,35 @@
+For this bhavya.website from hostinger
+Go to aws route 53- create hosted zone-ddomain name (bhavya.website)-deription -seclect public hosted zone-create hosted zone
+copy those 4 hosted zone-go to hostinger -choose your domain name -manage-change name servers-copy and paste 4 nameserver in the provided space nad chage.
+-------------------------------------------------------------------------------
+Go to s3 bucket -create -version enable-doct remove tick from pub acccess -create bucket.choose your bucket -properties -static web hosting - enable.
+
+Upload 2 files from desktop-staticwebsite-index.html and related image file.
+
+---------------------------------------------------------------------------------
+Now search certificate manager service in aws:
+
+Certificate manager -your region alwaays should be northern verginia--thia is the requirement of cloud front----
+certificate manager should be integrated with cloud front 
+wen you are request for certificate manager that has to be integrated with cloud front 
+that you need to create this certificate in northern verginia
+gO TO CERTIFICATE MANAGER ---choose region northern verginia -req a certificate -req a public certificate - next -qualified domain name -bhavya.website- 
+click on add another name tothis certificate  - *.bhavya.website   -- then choose dns validation recomonded   --- request- choose certificate id -create records in r53-
+--create records--
+Now go to certificates yoy can see two record are in pending status.  after few min it will be issue.
+-----------------------------------------------------------------------------------
+Next go for CLOUDFRONT
+CREATE DISTRIBUTION --Choose an AWS origin, or enter your origin's domain name (bhavya.website.s3.ap-south-1.amazonaws.com) --- 
+Origin access (CHOOSE  Origin access control settings (recommended)-----CLICK ON CREATE CONTROLL ACCESS SETTING ----KEEP AS IT IS THEN CLOCK ON CREATE.
+Viewer protocol policy (Redirect HTTP to HTTPS) --Custom SSL certificate (CHOOSE YOUR CERTIFICATE) ---
+Alternate domain name (bhavya.website --add (www.bhavya.websiet) ---
+Default root object (index.html)(this is the file name uploaded to bucket) --create distribution--that time one pop up will come
+...i.e to ypdate bucket policy....click on copy polict and open the update policy on another terminal....
+it will take you to bucket policy-click on edit---paste the policy---save changes.   
+Then go back to cloud front distribution page ----choose distribution...wait few min then it will be in available status....
+then hit with using its domain name and put/index.html ot  /aws_image.jpg ....it shoukld displaythe image (hese two files are uploaded in s3)\
+----------------------------------------------------------------------------------------------------------------
+NOW INTEGRATE R53 
+go to r53 ---create record----choose ur domain name -----choose simple routing-next----define simple record---record type ---(A)----set to alias----in that select---value/route trafic to( alias to cloud front distribution----
+choose your distribution----define simple record---create record.
+
