@@ -1,0 +1,5 @@
+For this bhavya.website from hostinger
+Go to aws route 53- create hosted zone-ddomain name (bhavya.website)-deription -seclect public hosted zone-create hosted zone
+copy those 4 hosted zone-go to hostinger -choose your domain name -manage-change name servers-copy and paste 4 nameserver in the provided space nad chage.
+Go to s3 bucket -create -version enable-doct remove tick from pub acccess -create bucket.choose your bucket -properties -static web hosting - enable.
+
